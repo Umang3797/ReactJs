@@ -1,48 +1,12 @@
-import React, { useState } from 'react';
+import './App.css';
+import { TodoWrapper } from './components/TodoWrapper';
 
-function TodoList() {
-  const [todos, setTodos] = useState([]);
-  const [inputValue, setInputValue] = useState('');
-
-  const handleInputChange = (event) => {
-    setInputValue(event.target.value);
-  };
-
-  const handleAddTodo = () => {
-    if (inputValue.trim() !== '') {
-      setTodos([...todos, inputValue]);
-      setInputValue('');
-    }
-  };
-
-  const handleDeleteTodo = (index) => {
-    const newTodos = [...todos];
-    newTodos.splice(index, 1);
-    setTodos(newTodos);
-  };
-
+function App() {
   return (
-    <div>
-      <h2>To-Do List</h2>
-      <div>
-        <input
-          type="text"
-          value={inputValue}
-          onChange={handleInputChange}
-          placeholder="Enter a new task"
-        />
-        <button onClick={handleAddTodo}>Add</button>
-      </div>
-      <ul>
-        {todos.map((todo, index) => (
-          <li key={index}>
-            {todo}
-            <button onClick={() => handleDeleteTodo(index)}>Delete</button>
-          </li>
-        ))}
-      </ul>
+    <div className="App">
+      <TodoWrapper  />
     </div>
   );
 }
 
-export default TodoList;
+export default App;
